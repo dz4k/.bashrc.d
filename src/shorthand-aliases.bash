@@ -9,7 +9,6 @@ alias l="ls"
 alias la="ls -a"
 alias ll="ls -la"
 
-mc() {
-	mkdir $1
-	cd $1
+mkcd() {
+	mkdir $1 && cd $1
 }

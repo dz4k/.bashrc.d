@@ -1,4 +1,10 @@
 
-alias discord="flatpak run com.discordapp.Discord"
-alias gedit="flatpak run org.gnome.gedit"
-alias inkscape="flatpak run org.inkscape.Inkscape"
+rc_flatpaks=( \
+	[discord]=com.discordapp.Discord \
+	[gedit]=org.gnome.gedit \
+	[inkscape]=org.inkscape.Inkscape \
+)
+
+for cmd in "${!rc_flatpaks[@]}"; do
+	alias $cmd="flatpak run ${rc_flatpaks[$cmd]}"
+done

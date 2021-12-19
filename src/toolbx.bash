@@ -1,12 +1,14 @@
 
+require ./shorthand-aliases.bash
+
 if [ -f /run/.toolboxenv ]; then
 
-	export TOOLBOX_NAME=$(cat /run/.containerenv | \
-	                      grep 'name=' | sed -e 's/^name="\(.*\)"$/\1/')
+	export TOOLBOX_NAME=$(grep 'name=' /run/.containerenv | \
+	                        sed -e 's/^name="\(.*\)"$/\1/')
 	
-	alias ,,="flatpak-spawn --host"
+	alias ,="flatpak-spawn --host"
 
 	for cmd in flatpak xdg-open; do
-		alias "$cmd=,, $cmd"
+		alias "$cmd=, $cmd"
 	done
 fi
